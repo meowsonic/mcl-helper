@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="fnc.js"></script>
+	<link id="lcss" rel="stylesheet" href="style.css" type="text/css" media="all">
+	<style>
+		[_nghost-xya-c63] {
+			font-family: Open Sans, sans-serif;
+			color: #121212
+		}
+	</style>
+</head>
+
+<body>
+	<ul id="tabs">
+		<li><a href="#" title="tab1">MCL</a></li>
+		<li><a href="#" title="tab2">Информация</a></li>
+		<li><a href="#" title="tab3">Настройки</a></li>
+	</ul>
+
+	<div id="content">
+		<div id="tab1">
+			<div id="dGameBtns">
+				<input id="orgBtnAddFraction" type="button" value="Add fraction">
+			</div>
+			<div id="cover" class="clear table left">
+				<div class="tr" id="tr0">
+					<div class="th clNums"></div>
+					<div class="th clNames">Фракция</div>
+					<div class="th clEms">EMS</div>
+					<div class="th clTech">Крайм</div>
+					<div class="th clMilitary">Военные</div>
+					<div class="th clSuper">Супер</div>
+				</div>
+				<div class="tr" id="tr1">
+					<div class="td clNums" id="sNum1"><span class="sDigit">1</span>
+						<span class="sBtn mousehand" onclick="deleteFraction(1);">-</span>
+						<span class="sBtn btnSmall mousehand" onclick="upFraction(1);">▲</span>
+						<span class="sBtn btnSmall mousehand" onclick="downFraction(1);">▼</span>
+					</div>
+					<div class="td clNames" id="sName1">
+						<span class="left">
+							<input type="text" class="left" value="" oninput="setFractionName(1)" id="sNameVal1">
+						</span>
+					</div>
+					<div class="td clEms" id="sEms1">
+						<span class="left">
+							<input type="text" class="left" value="0" oninput="calculate('sEmsVal1', 'rEmsVal1')" id="sEmsVal1">
+						</span>
+					</div>
+					<div class="td clTech" id="sTech1">
+						<span class="left">
+							<input type="text" class="left" value="0" oninput="calculate('sTechVal1', 'rTechVal1')" id="sTechVal1">
+						</span>
+					</div>
+					<div class="td clMilitary" id="sMilitary1">
+						<span class="left">
+							<input type="text" class="left" value="0" oninput="calculate('sMilitaryVal1', 'rMilitaryVal1')" id="sMilitaryVal1">
+						</span>
+					</div>
+					<div class="td clSuper" id="sSuper1">
+						<span class="left">
+							<input type="text" class="left" value="0" oninput="calculate('sSuperVal1', 'rSuperVal1')" id="sSuperVal1">
+						</span>
+					</div>
+				</div>
+
+			</div>
+			<div id="cover-results" class="clear table left results">
+				<div class="tr" id="tr0">
+					<div class="th clNums"></div>
+					<div class="th clNames">Фракция</div>
+					<div class="th clEms">EMS</div>
+					<div class="th clTech">Крайм</div>
+					<div class="th clMilitary">Военные</div>
+					<div class="th clSuper">Супер</div>
+				</div>
+				<div class="tr" id="tr1">
+					<div class="td clNums" id="sNum1"><span class="sDigit2">1</span>
+						<span class="sBtn mousehand" onclick="deleteFraction(1);">-</span>
+						<span class="sBtn btnSmall mousehand" onclick="upFraction(1);">▲</span>
+						<span class="sBtn btnSmall mousehand" onclick="downFraction(1);">▼</span>
+					</div>
+					<div class="td clNames" id="rName1">
+						<span class="left">
+							<input type="text" class="left" id="rNameVal1" value="" disabled>
+						</span>
+					</div>
+					<div class="td clEms" id="rEms1">
+						<span class="left">
+							<input type="text" class="left" id="rEmsVal1" value="0" disabled>
+						</span>
+					</div>
+					<div class="td clTech" id="rTech1">
+						<span class="left">
+							<input type="text" class="left" id="rTechVal1" value="0" disabled>
+						</span>
+					</div>
+					<div class="td clMilitary" id="rMilitary1">
+						<span class="left">
+							<input type="text" class="left" id="rMilitaryVal1" value="0" disabled>
+						</span>
+					</div>
+					<div class="td clSuper" id="rSuper1">
+						<span class="left">
+							<input type="text" class="left" id="rSuperVal1" value="0" disabled>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="tab2" style="display: none;">
+			<div id="dInfoSigns">
+			</div>
+			<div>
+			</div>
+		</div>
+		<div id="tab3" style="display: none;">
+			<div id="cover" class="clear table left">
+				<div class="tr" id="tr-settings">
+					<div class="th clEms">EMS</div>
+					<div class="th clTech">Крайм</div>
+					<div class="th clMilitary">Военные</div>
+					<div class="th clSuper">Супер</div>
+				</div>
+				<div class="td clEms">
+					<span class="left">
+						<input type="text" class="left" value="1200" id="settingEms">
+					</span>
+				</div>
+				<div class="td clTech">
+					<span class="left">
+						<input type="text" class="left" value="1900"  id="settingTech">
+					</span>
+				</div>
+				<div class="td clMilitary">
+					<span class="left">
+						<input type="text" class="left" value="2000" id="settingMilitary">
+					</span>
+				</div>
+				<div class="td clSuper">
+					<span class="left">
+						<input type="text" class="left" value="2500" id="settingSuper">
+					</span>
+				</div>
+			</div>
+		</div>
+</body>
+<app-content ng-version="13.2.0"></app-content>
+
+</html>
