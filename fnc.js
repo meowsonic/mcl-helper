@@ -15,10 +15,6 @@ $(document).ready(function () {
         $('#' + $(this).attr('title')).fadeIn(); // Выводим содержание текущей закладки
     });
 
-    for (i = 1; i < $arBtnTitles.length; i++) {
-        $arBtnTitles[i] = $('<div/>').html($arBtnTitles[i]).text();
-    }
-
     $('#orgBtnAddFraction').click(function () {
         $rows++;
         $fractions++;
