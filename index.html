@@ -7,6 +7,7 @@
 
 	<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="fnc.js"></script>
+	<script type="text/javascript" src="config.js"></script>
 	<link id="lcss" rel="stylesheet" href="style.css" type="text/css" media="all">
 	<style>
 		[_nghost-xya-c63] {
@@ -27,6 +28,7 @@
 		<div id="tab1">
 			<div id="dGameBtns">
 				<input id="orgBtnAddFraction" type="button" value="Add fraction">
+				<input id="orgBtnAddFamily" type="button" value="Add family">
 			</div>
 			<div id="cover" class="clear table left">
 				<div class="tr" id="tr0">
@@ -50,22 +52,26 @@
 					</div>
 					<div class="td clEms" id="sEms1">
 						<span class="left">
-							<input type="text" class="left" value="0" oninput="calculate('sEmsVal1', 'rEmsVal1')" id="sEmsVal1">
+							<input type="text" class="left" value="0" oninput="calculate('sEmsVal1', 'rEmsVal1', 1)"
+								id="sEmsVal1">
 						</span>
 					</div>
 					<div class="td clTech" id="sTech1">
 						<span class="left">
-							<input type="text" class="left" value="0" oninput="calculate('sTechVal1', 'rTechVal1')" id="sTechVal1">
+							<input type="text" class="left" value="0" oninput="calculate('sTechVal1', 'rTechVal1', 1)"
+								id="sTechVal1">
 						</span>
 					</div>
 					<div class="td clMilitary" id="sMilitary1">
 						<span class="left">
-							<input type="text" class="left" value="0" oninput="calculate('sMilitaryVal1', 'rMilitaryVal1')" id="sMilitaryVal1">
+							<input type="text" class="left" value="0"
+								oninput="calculate('sMilitaryVal1', 'rMilitaryVal1', 1)" id="sMilitaryVal1">
 						</span>
 					</div>
 					<div class="td clSuper" id="sSuper1">
 						<span class="left">
-							<input type="text" class="left" value="0" oninput="calculate('sSuperVal1', 'rSuperVal1')" id="sSuperVal1">
+							<input type="text" class="left" value="0" oninput="calculate('sSuperVal1', 'rSuperVal1', 1)"
+								id="sSuperVal1">
 						</span>
 					</div>
 				</div>
@@ -127,25 +133,32 @@
 					<div class="th clTech">Крайм</div>
 					<div class="th clMilitary">Военные</div>
 					<div class="th clSuper">Супер</div>
+					<div id="site-config">
+						<select id="config">
+							<option onchange="setFractionConfig()">Фракционный</option>
+							<option onchange="setFamilyConfig()">Семейный</option>
+						</select>
+						<input type="button" value="Set config" onclick="loadConfig()"></input>
+					</div>
 				</div>
 				<div class="td clEms">
 					<span class="left">
-						<input type="text" class="left" value="1200" id="settingEms">
+						<input type="text" value="1200" id="settingEms">
 					</span>
 				</div>
 				<div class="td clTech">
 					<span class="left">
-						<input type="text" class="left" value="1900"  id="settingTech">
+						<input type="text" value="1900" id="settingTech">
 					</span>
 				</div>
 				<div class="td clMilitary">
 					<span class="left">
-						<input type="text" class="left" value="2000" id="settingMilitary">
+						<input type="text" value="2000" id="settingMilitary">
 					</span>
 				</div>
 				<div class="td clSuper">
 					<span class="left">
-						<input type="text" class="left" value="2500" id="settingSuper">
+						<input type="text" value="2500" id="settingSuper">
 					</span>
 				</div>
 			</div>

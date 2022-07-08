@@ -201,6 +201,10 @@ body {
 	min-width: 100px
 }
 
+.clWin {
+	min-width: 100px;
+}
+
 .clNames input {
 	outline: 0;
 	border: 0;
@@ -211,11 +215,21 @@ body {
 	text-align: center;
 }
 
+.clWin input[type=checkbox] {
+	display: none;
+}
+
+.clWin input[type=checkbox]:checked+label {
+	background-color: green;
+}
+
+
 .clTech input,
 .clMilitary input,
-.clEms input,
 .clSuper input,
-.clEms input {
+.clEms input,
+.clResult input,
+.clWin select {
 	outline: 0;
 	border: 0;
 	height: 34px;
@@ -297,7 +311,8 @@ span {
 	height: 38px;
 }
 
-#orgBtnAddFraction {
+#orgBtnAddFraction,
+#orgBtnAddFamily {
 	background-color: #9c9;
 	border: none;
 	text-align: center;
@@ -314,32 +329,11 @@ span {
 	font-size: 22px
 }
 
-#orgBtnAddFraction:hover {
+#orgBtnAddFraction:hover,
+#orgBtnAddFamily:hover {
 	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-}
-
-#btnSpreadRoles {
-	width: 123px;
-}
-
-#btnNight,
-#btnDay,
-#btnClear,
-#btnTimer {
-	height: 38px;
-	width: 75px;
-	margin: 0;
-	margin-bottom: 5px;
 }
 
 #btnClear {
 	width: auto;
-}
-
-.gamerDie {
-	background: #ccc !important;
-}
-
-.roleMaff {
-	background: #fce4d6;
 }
