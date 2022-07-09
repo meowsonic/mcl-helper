@@ -1,4 +1,5 @@
 function setFractionConfig() {
+    if(config == 'fraction') return
     const nameTabs = document.getElementsByClassName("th clNames")
     const nameTabArr = Array.from(nameTabs)
 
@@ -19,9 +20,13 @@ function setFractionConfig() {
     $('.clResult').each(function() { 
         $(this).remove()
     })
+
+    $config = 'fraction'
 }
 
 function setFamilyConfig() {
+    if($config == 'family') return
+
     const nameTabs = document.getElementsByClassName("th clNames")
     const nameTabArr = Array.from(nameTabs)
     nameTabArr.map(tab => tab.innerText = "Семья")
@@ -37,6 +42,7 @@ function setFamilyConfig() {
     $("#settingMilitary").val(150000)
     $("#settingSuper").val(200000)
     $('#cover #tr0').append(winTab)
+
     $('#cover #tr1').append(win)
 
     $('#cover-results #tr0').append(resultTab)
@@ -74,6 +80,7 @@ function setFamilyConfig() {
 
         $('#cover-results').append(r)
         renum()
+        $config = 'family'
     })
 
 }

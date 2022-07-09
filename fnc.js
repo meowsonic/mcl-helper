@@ -2,6 +2,7 @@ $(document).ready(function () {
     $rows = $fractions = 1
     $select = '<input>'
     $winSum = 0
+    $config = ''
 
     for ($i = 1; $i <= 3; $i++) { $("#content #tab" + $i).hide(); }
     $('#orgBtnAddFamily').hide()
