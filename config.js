@@ -1,3 +1,4 @@
+$config = 'fraction'
 function setFractionConfig() {
     if(config == 'fraction') return
     const nameTabs = document.getElementsByClassName("th clNames")
@@ -80,9 +81,8 @@ function setFamilyConfig() {
 
         $('#cover-results').append(r)
         renum()
-        $config = 'family'
     })
-
+    $config = 'family'
 }
 
 function loadConfig() { 
