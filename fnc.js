@@ -107,5 +107,5 @@ function calculate(first, second, id) {
 
 function calculateWin(id, status) {
     (status == 1) ? $winSum = 500000 : $winSum = 0
-    $(`#sResultVal1`).val($winSum + parseInt($(`#rEmsVal${id}`).val()) + parseInt($(`#rTechVal${id}`).val()) + parseInt($(`#rSuperVal${id}`).val()) + parseInt($(`#rMilitaryVal${id}`).val()))
+    $(`#sResultVal${id}`).val($winSum + parseInt($(`#rEmsVal${id}`).val()) + parseInt($(`#rTechVal${id}`).val()) + parseInt($(`#rSuperVal${id}`).val()) + parseInt($(`#rMilitaryVal${id}`).val()))
 }
