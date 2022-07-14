@@ -38,6 +38,7 @@
 					<div class="th clTech">Крайм</div>
 					<div class="th clMilitary">Военные</div>
 					<div class="th clSuper">Супер</div>
+					<div class="th clWin">Победа</div>
 				</div>
 				<div class="tr" id="tr1">
 					<div class="td clNums" id="sNum1"><span class="sDigit">1</span>
@@ -72,6 +73,16 @@
 						<span class="left">
 							<input type="text" class="left" value="0" oninput="calculate('sSuperVal1', 'rSuperVal1', 1)"
 								id="sSuperVal1">
+						</span>
+					</div>
+					<div class="td clWin" id="sWin1">
+						<span class="left">
+							<select id="sWinCheckbox" onchange="fractionWin(this.selectedIndex, 1)">
+								<option>X</option>
+								<option>Мед</option>
+								<option>Тех</option>
+								<option>Оруж</option>
+							</select>
 						</span>
 					</div>
 				</div>

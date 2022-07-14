@@ -1,6 +1,6 @@
 $config = 'fraction'
 function setFractionConfig() {
-    if(config == 'fraction') return
+    if (config == 'fraction') return
     const nameTabs = document.getElementsByClassName("th clNames")
     const nameTabArr = Array.from(nameTabs)
 
@@ -14,19 +14,29 @@ function setFractionConfig() {
     $("#settingMilitary").val(2000)
     $("#settingSuper").val(2500)
 
-    $('.clWin').each(function() { 
+    $('.clWin').each(function () {
         $(this).remove()
     })
 
-    $('.clResult').each(function() { 
+    $('.clResult').each(function () {
         $(this).remove()
     })
+
+    const matsTab = `<div class="th clWin">Победа</div>`
+    const matsCell = `<div class="td clWin" id="sWin1"><span class="left"><select id="sWinCheckbox" onchange"fractionWin(this.selectedIndex)"><option>Мед</option><option>Тех</option><option>Оруж</option></span></div>`
+
+    $('#cover #tr0').append(matsTab)
+    $('#cover #tr1').append(matsCell)
 
     $config = 'fraction'
 }
 
 function setFamilyConfig() {
-    if($config == 'family') return
+    if ($config == 'family') return
+
+    $('.clWin').each(function () {
+        $(this).remove()
+    })
 
     const nameTabs = document.getElementsByClassName("th clNames")
     const nameTabArr = Array.from(nameTabs)
@@ -85,6 +95,6 @@ function setFamilyConfig() {
     $config = 'family'
 }
 
-function loadConfig() { 
+function loadConfig() {
     $('#config').val() == 'Фракционный' ? setFractionConfig() : setFamilyConfig()
 }

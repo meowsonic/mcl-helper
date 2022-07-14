@@ -2,6 +2,7 @@ $(document).ready(function () {
     $rows = $fractions = 1
     $select = '<input>'
     $winSum = 0
+    $lastWinTab = 0
 
     for ($i = 1; $i <= 3; $i++) { $("#content #tab" + $i).hide(); }
     $('#orgBtnAddFamily').hide()
@@ -31,6 +32,7 @@ $(document).ready(function () {
         s = s + `<div class="td clTech" id="sTech${$rows}"><span class="left"><input oninput="calculate('sTechVal${$rows}', 'rTechVal${$rows}', ${$rows})" id="sTechVal${$rows}" type="text" class="left" value="0"/></span></div>`;
         s = s + `<div class="td clMilitary" id="sMilitary${$rows}"><span class="left"><input oninput="calculate('sMilitaryVal${$rows}', 'rMilitaryVal${$rows}', ${$rows})" id="sMilitaryVal${$rows}" type="text" class="left" value="0"/></span></div>`;
         s = s + `<div class="td clSuper" id="sSuper${$rows}"><span class="left"><input oninput="calculate('sSuperVal${$rows}', 'rSuperVal${$rows}', ${$rows})" id="sSuperVal${$rows}" type="text" class="left" value="0"/></span></div>`;
+        s = s + `<div class="td clWin" id="sWin${$rows}"><span class="left"><select id="sWinCheckbox" onchange="fractionWin(this.selectedIndex, ${$rows})"><option>X</option><option>Мед</option><option>Тех</option><option>Оруж</option></select></span></div>`;
         s = s + `</div>`;
         $('#cover').append(s);
 
@@ -88,24 +90,44 @@ function calculate(first, second, id) {
     switch (second.replace(/[0-9]/g, '')) {
         case 'rEmsVal':
             $(`#${second}`).val($(`#${first}`).val() * $(`#settingEms`).val())
-            $(`#sResultVal${id}`).val(parseInt($(`#rEmsVal${id}`).val()) + parseInt($(`#rTechVal${id}`).val()) + parseInt($(`#rSuperVal${id}`).val()) + parseInt($(`#rMilitaryVal${id}`).val()) + $winSum)
             break
         case 'rTechVal':
             $(`#${second}`).val($(`#${first}`).val() * $(`#settingTech`).val())
-            $(`#sResultVal${id}`).val(parseInt($(`#rEmsVal${id}`).val()) + parseInt($(`#rTechVal${id}`).val()) + parseInt($(`#rSuperVal${id}`).val()) + parseInt($(`#rMilitaryVal${id}`).val()) + $winSum)
             break
         case 'rMilitaryVal':
             $(`#${second}`).val($(`#${first}`).val() * $(`#settingMilitary`).val())
-            $(`#sResultVal${id}`).val(parseInt($(`#rEmsVal${id}`).val()) + parseInt($(`#rTechVal${id}`).val()) + parseInt($(`#rSuperVal${id}`).val()) + parseInt($(`#rMilitaryVal${id}`).val()) + $winSum)
             break
         case 'rSuperVal':
             $(`#${second}`).val($(`#${first}`).val() * $(`#settingSuper`).val())
-            $(`#sResultVal${id}`).val(parseInt($(`#rEmsVal${id}`).val()) + parseInt($(`#rTechVal${id}`).val()) + parseInt($(`#rSuperVal${id}`).val()) + parseInt($(`#rMilitaryVal${id}`).val()) + $winSum)
             break
     }
+
+    $(`#sResultVal${id}`).val(+($(`#rEmsVal${id}`).val()) + +($(`#rTechVal${id}`).val()) + +($(`#rSuperVal${id}`).val()) + +($(`#rMilitaryVal${id}`).val()) + $winSum)
 }
 
 function calculateWin(id, status) {
     (status == 1) ? $winSum = 500000 : $winSum = 0
     $(`#sResultVal${id}`).val($winSum + parseInt($(`#rEmsVal${id}`).val()) + parseInt($(`#rTechVal${id}`).val()) + parseInt($(`#rSuperVal${id}`).val()) + parseInt($(`#rMilitaryVal${id}`).val()))
+}
+
+function fractionWin(id, tab) {
+    $lastWinTab == 1 ? $(`#rEmsVal${tab}`).val($(`#rEmsVal${tab}`).val() - 5000) : $lastWinTab == 2 ? $(`#rTechVal${tab}`).val($(`#rTechVal${tab}`).val() - 5000) : $lastWinTab == 3 ? $(`#rMilitaryVal${tab}`).val($(`#rMilitaryVal${tab}`).val() - 5000) : null
+    $winSum = 5000
+
+    switch (id) {
+        case 0:
+            $winSum = 0
+            break;
+        case 1:
+            $(`#rEmsVal${tab}`).val(+$(`#rEmsVal${tab}`).val() + $winSum)
+            break
+        case 2:
+            $(`#rTechVal${tab}`).val(+$(`#rTechVal${tab}`).val() + $winSum)
+            break
+        case 3:
+            $(`#rMilitaryVal${tab}`).val(+$(`#rMilitaryVal${tab}`).val() + $winSum)
+            break
+    }
+
+    $lastWinTab = id
 }
