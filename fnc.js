@@ -63,14 +63,19 @@ function renum() {
 }
 
 function upFraction(n) {
-    if ('tr0' != $('#tr' + n).prev().attr('id'))
+    if ('tr0' != $('#tr' + n).prev().attr('id')) {
         $('#tr' + n).prev().before($('#tr' + n))
+        $('#cover-results #tr' + n).prev().before($('#cover-results #tr' + n))
+    }
+
     renum()
 }
 
 function downFraction(n) {
-    if (undefined != $('#tr' + n).next().attr('id'))
+    if (undefined != $('#tr' + n).next().attr('id')) {
         $('#tr' + n).next().after($('#tr' + n));
+        $('#cover-results #tr' + n).next().after($('#cover-results #tr' + n))
+    }
     renum();
 }
 
